@@ -18,19 +18,19 @@ function string2Number(string, decimalSeparator='.') {
  * Given a price string, returns currency and value
  * @param {String} string 
  * @param {String} decimalSeparator 
- * @returns {Array} currency and value
+ * @returns {Object} currency and value
  */
-function currency2Number(string, decimalSeparator='.') {
+function parsePrice(string, decimalSeparator='.') {
     try{
         let regexMatchArray = string.trim().match(/^(\D*\$\D*)(.*)$/)
         let currency = regexMatchArray[1].trim()
-        let value = string2Number(regexMatchArray[2], decimalSeparator=decimalSeparator)
-        return [currency, value]
+        let price = string2Number(regexMatchArray[2], decimalSeparator=decimalSeparator)
+        return {currency:currency, price:price}
     } catch(err){
-        return [null, null]
+        return null
     }
 
 }
 
 
-module.exports = {string2Number, currency2Number}
+module.exports = {string2Number, parsePrice}

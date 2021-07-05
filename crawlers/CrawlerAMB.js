@@ -89,9 +89,9 @@ class CrawlerAMB extends Crawler {
         raw_price = $('.a-color-price').first().text().trim()
     }
 
-    [currency, price] = priceparser.currency2Number(raw_price, ',')
+    let parsedPrice = priceparser.parsePrice(raw_price, ',')
 
-    if(!title || !price || !currency){
+    if(!title || !parsedPrice || !parsedPrice.price || !parsedPrice.currency){
       throw Error('Error parsing product item page');
     }
 
@@ -125,8 +125,8 @@ class CrawlerAMB extends Crawler {
     product.id = id
     product.data.url = `${PRODUCT_PAGE_BASE_URL}${id}`
 
-    product.data.price = price
-    product.data.currency = currency
+    product.data.price = parsedPrice.price
+    product.data.currency = parsedPrice.currency
 
     product.data.image = image
     product.data.title = title
