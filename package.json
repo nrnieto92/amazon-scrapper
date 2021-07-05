@@ -1,0 +1,21 @@
+{
+  "name": "amz-scrapper",
+  "version": "1.0.0",
+  "description": "amazon brasil sample scrapper",
+  "main": "main.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js"
+  },
+  "author": "nicolas nieto",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "chai": "^4.3.4",
+    "cheerio": "^1.0.0-rc.10",
+    "jest": "^27.0.6"
+  }
+}
