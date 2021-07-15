@@ -36,10 +36,10 @@ class CrawlerAMB extends Crawler {
     if (!body) throw Error('Request Error')
 
     try {
-      const $ = cheerio.load(body)
 
       let product = this.parseProductDetails(id, body)
       return product
+      
     }
     catch (err) {
       throw err;
